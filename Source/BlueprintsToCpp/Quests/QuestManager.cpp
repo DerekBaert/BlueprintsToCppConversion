@@ -18,10 +18,27 @@ void AQuestManager::BeginPlay()
 	
 }
 
+
 // Called every frame
 void AQuestManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
+
+void AQuestManager::CompleteQuest_Implementation(FName QuestId, bool CompleteWholeQuest)
+{
+	int32 QuestIndex = GetQuestIndex(QuestId);
+	FQuestInfo Quest = QuestList[QuestIndex];
+	if(CompleteWholeQuest)
+	{
+		QuestList[QuestIndex].Progress = Quest.ProgressTotal;
+	}
+	else
+	{
+		QuestList[QuestIndex].Progress = FMath::Min(Quest.Progress + 1, Quest.ProgressTotal);
+	}
+}
+
+
 
