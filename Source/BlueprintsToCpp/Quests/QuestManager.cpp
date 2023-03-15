@@ -11,6 +11,11 @@ AQuestManager::AQuestManager()
 
 }
 
+FQuestInfo AQuestManager::GetQuest(FName Name) const
+{
+	return QuestList[GetQuestIndex(Name)];
+}
+
 // Called when the game starts or when spawned
 void AQuestManager::BeginPlay()
 {

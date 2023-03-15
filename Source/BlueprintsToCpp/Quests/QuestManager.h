@@ -17,19 +17,24 @@ public:
 	// Sets default values for this actor's properties
 	AQuestManager();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-	UFUNCTION(BlueprintPure, BlueprintImplementableEvent)
-	int32 GetQuestIndex(FName QuestId);
-
-public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void CompleteQuest(FName QuestId, bool CompleteWholeQuest);
+
+	UFUNCTION(BlueprintPure)
+	FQuestInfo GetQuest(FName Name) const;
+
+	UFUNCTION(BlueprintPure,  BlueprintImplementableEvent)
+	bool isActiveQuest(FName QuestId) const;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintPure, BlueprintImplementableEvent)
+	int32 GetQuestIndex(FName QuestId) const;
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

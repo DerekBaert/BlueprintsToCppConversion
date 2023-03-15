@@ -19,6 +19,13 @@ AQuestMarker::AQuestMarker()
 
 }
 
+void AQuestMarker::RefreshVisibility()
+{
+	FQuestInfo Quest = GetQuestManager()->GetQuest(QuestName);
+	bool Visibility = GetQuestManager()->isActiveQuest(QuestName) && Quest.Progress == ShowAtProgress;
+	NiagaraSystem->SetVisibility(Visibility);
+}
+
 // Called when the game starts or when spawned
 void AQuestMarker::BeginPlay()
 {
