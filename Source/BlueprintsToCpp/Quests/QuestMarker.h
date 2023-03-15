@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "QuestMarker.generated.h"
 
+class UNiagaraComponent;
+
 UCLASS()
 class BLUEPRINTSTOCPP_API AQuestMarker : public AActor
 {
@@ -22,5 +24,12 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USceneComponent* Root;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UNiagaraComponent* NiagaraSystem;
 
 };
