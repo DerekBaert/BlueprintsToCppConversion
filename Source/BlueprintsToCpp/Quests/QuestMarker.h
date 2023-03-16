@@ -45,4 +45,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int32 ShowAtProgress = 0;
 
+private:
+	UFUNCTION()
+	void QuestUpdated(int32 Index);
+
 };

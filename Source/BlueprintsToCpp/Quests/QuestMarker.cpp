@@ -29,8 +29,8 @@ void AQuestMarker::RefreshVisibility()
 // Called when the game starts or when spawned
 void AQuestMarker::BeginPlay()
 {
-	Super::BeginPlay();
-	
+	GetQuestManager()->CompletedQuest.AddDynamic(this, &AQuestMarker::QuestUpdated);
+	RefreshVisibility();	
 }
 
 // Called every frame
@@ -38,5 +38,10 @@ void AQuestMarker::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AQuestMarker::QuestUpdated(int32 Index)
+{
+	RefreshVisibility();
 }
 
